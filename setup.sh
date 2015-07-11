@@ -8,4 +8,4 @@ for dotfile in .*; do
         ln -s $(pwd)/$dotfile ~/$dotfile
     fi
 done
-
+echo "Done. Please restart your shell for bash configurations to appear"
