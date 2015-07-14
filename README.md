@@ -5,7 +5,9 @@ Configurations and preferences that are nice to have, but are painful and irrita
 ## Installation
 
 `git clone <repo_url>` into a desired location.
+
 `cd <repo_dir>`
+
 `./setup.sh`
 
 Then restart your shell, and all the changes should take place (for non-bash configurations, the changes should take place the next time you launch the application).
