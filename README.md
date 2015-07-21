@@ -1,6 +1,7 @@
 # .dotfiles
 
-Configurations and preferences that are nice to have, but are painful and irritating to set up over and over again.
+Configurations and preferences that are nice to have, but are painful and 
+irritating to set up over and over again.
 
 ## Installation
 
@@ -22,11 +23,19 @@ chsh -s $(brew ls bash | grep '/bin/bash$') $(whoami)
 
 `./setup.sh`
 
-Then restart your shell, and all the changes should take place (for non-bash configurations, the changes should take place the next time you launch the application).
+Then restart your shell, and all the changes should take place 
+(for non-bash configurations, the changes should take place 
+the next time you launch the application).
 
-Note: For further changes to bash after running `./setup.sh` at least once on your machine, running `refresh` will re-source your `.bashrc` and the changes will take place immediately and not require a shell restart.
+Note: For further changes to bash after running `./setup.sh` at least once on 
+your machine, running `refresh` will re-source your `.bashrc` and the changes 
+will take place immediately and not require a shell restart.
 
-## Humble Requests
+### For those of us new to bash
 
-Please put all bash configurations into `.bashrc` and not in `.bash_profile`.
+#### .bashrc vs .bash\_profile
 
+.bashrc is for non-login shells, and .bash_profile is for login shells.
+If you want something to only show up at login, do it in .bash_profile,
+not .bashrc. Otherwise, put it in .bashrc
+ 
