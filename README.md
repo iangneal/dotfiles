@@ -4,6 +4,18 @@ Configurations and preferences that are nice to have, but are painful and irrita
 
 ## Installation
 
+Make sure you have bash >= 4.0 installed 
+
+For Mac: 
+
+```
+brew install bash
+sudo -s
+brew ls bash | grep '/bin/bash$' >> /etc/shells
+exit
+chsh -s $(brew ls bash | grep '/bin/bash$') $(whoami)
+```
+
 `git clone https://github.com/Dahca/dotfiles.git` into a desired location.
 
 `cd <repo_dir>`
