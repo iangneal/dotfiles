@@ -37,16 +37,24 @@ bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
 
 export PATH="/usr/local/sbin:$PATH"
-export PS1="\[$txtgrn\]\u@\h\[\e[m\]:\[$bldblu\]\w\[\e[m\] - \A \[$txtylw\]$\[\e[m\] "
+if [ "$(whoami)" = "root" ]; then
+    export PS1="\[$bldred\]\u@\h\[\e[m\]:\[$bldblu\]\w\[\e[m\] - \A \[$bldred\]#\[\e[m\] "
+else
+    export PS1="\[$txtgrn\]\u@\h\[\e[m\]:\[$bldblu\]\w\[\e[m\] - \A \[$txtylw\]$\[\e[m\] "
+fi
 export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 
 alias ls="ls -Gal"
+
 alias gau="git add -u"
 alias gaa="git add -A"
 alias gcm="git commit -m"
 alias gcam="git commit -a -m"
 alias gs="git status"
 alias gp="git push"
+
+alias clr="clear"
+
 alias refresh="source ~/.bashrc"
 
 # allows ** to be recursive
