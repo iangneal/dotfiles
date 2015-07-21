@@ -4,7 +4,7 @@ Configurations and preferences that are nice to have, but are painful and irrita
 
 ## Installation
 
-`git clone <repo_url>` into a desired location.
+`git clone https://github.com/Dahca/dotfiles.git` into a desired location.
 
 `cd <repo_dir>`
 

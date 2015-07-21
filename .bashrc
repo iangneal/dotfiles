@@ -7,6 +7,7 @@ alias gaa="git add -A"
 alias gcm="git commit -m"
 alias gcam="git commit -a -m"
 alias gs="git status"
+alias gp="git push"
 alias refresh="source ~/.bashrc"
 
 # allows ** to be recursive
