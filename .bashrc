@@ -53,6 +53,14 @@ alias gcam="git commit -a -m"
 alias gs="git status"
 alias gp="git push"
 
+gitAllFunction(){
+    git commit -a -m "$1"
+    git push
+}
+
+alias gcamp=gitAllFunction
+
+
 alias clr="clear"
 
 alias refresh="source ~/.bashrc"
