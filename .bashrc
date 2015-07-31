@@ -38,9 +38,13 @@ txtrst='\e[0m'    # Text Reset
 
 export PATH="/usr/local/sbin:$PATH"
 if [ "$(whoami)" = "root" ]; then
-    export PS1="\[$bldred\]\u@\h\[\e[m\]:\[$bldblu\]\w\[\e[m\] - \A \[$bldred\]#\[\e[m\] "
+	a="\[$bldred\]\u@\h\[\e[m\]:\[$bldblu\]\w\[\e[m\]"
+	b=" - \A \[$bldred\]#\[\e[m\] "
+    export PS1=$a$b
 else
-    export PS1="\[$txtgrn\]\u@\h\[\e[m\]:\[$bldblu\]\w\[\e[m\] - \A \[$txtylw\]$\[\e[m\] "
+	a="\[$txtgrn\]\u@\h\[\e[m\]:\[$bldblu\]\w\[\e[m\]"
+	b=" - \A \[$txtylw\]$\[\e[m\] "
+    export PS1=$a$b
 fi
 export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 
@@ -51,7 +55,10 @@ alias gaa="git add -A"
 alias gcm="git commit -m"
 alias gcam="git commit -a -m"
 alias gs="git status"
-alias gp="git push"
+alias gps="git push"
+alias gpl="git pull"
+
+alias sl="sl -e"
 
 gitAllFunction(){
     git commit -a -m "$1"
