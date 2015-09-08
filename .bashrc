@@ -57,6 +57,8 @@ alias gcam="git commit -a -m"
 alias gs="git status"
 alias gps="git push"
 alias gpl="git pull"
+alias gch="git checkout"
+alias gbr="git checkout -b"
 
 alias sl="sl -e"
 
