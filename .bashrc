@@ -54,7 +54,10 @@ alias gau="git add -u"
 alias gaa="git add -A"
 alias gcm="git commit -m"
 alias gcam="git commit -a -m"
+
 alias gs="git status"
+alias gl="git log"
+
 alias gps="git push"
 alias gpl="git pull"
 alias gch="git checkout"
