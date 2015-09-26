@@ -50,6 +50,8 @@ export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 
 alias ls="ls -Gal"
 
+## Section for git related commands
+
 alias gau="git add -u"
 alias gaa="git add -A"
 alias gcm="git commit -m"
@@ -63,14 +65,17 @@ alias gpl="git pull"
 alias gch="git checkout"
 alias gbr="git checkout -b"
 
-alias sl="sl -e"
-
 gitAllFunction(){
     git commit -a -m "$1"
     git push
 }
 
 alias gcamp=gitAllFunction
+
+## Section for mistakenly typed commands
+
+alias sl="sl -e"
+alias cd..="cd .."
 
 
 alias clr="clear"
