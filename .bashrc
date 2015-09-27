@@ -37,6 +37,7 @@ bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
 
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 if [ "$(whoami)" = "root" ]; then
 	a="\[$bldred\]\u@\h\[\e[m\]:\[$bldblu\]\w\[\e[m\]"
 	b=" - \A \[$bldred\]#\[\e[m\] "
