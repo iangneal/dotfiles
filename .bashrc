@@ -36,8 +36,52 @@ bakcyn='\e[46m'   # Cyan
 bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
 
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+## Section for path related things
+
+prependPath(){
+    for var in "$@"
+    do
+        if [[ "$PATH" != *"$var"* ]]
+        then
+            echo $var
+            export PATH="$var:$PATH"
+        else
+            # remove all instances of this variable from the path
+            # and then prepend - gets rid of the issue of having 
+            # the same thing on the path multiple times.
+            sed_flag="-r"
+            if [ "$(uname)" == "Darwin" ]; then
+                sed_flag="-E"
+            fi
+            trimmed=$(echo $PATH | sed $sed_flag s,$var:?,,g)
+            export PATH="$var:$trimmed"
+        fi
+    done
+}
+
+removePath(){
+    for var in "$@"
+    do
+        if [[ "$PATH" == *"$var"* ]]
+        then
+            sed_flag="-r"
+            if [ "$(uname)" == "Darwin" ]; then
+                sed_flag="-E"
+            fi
+            trimmed=$(echo $PATH | sed $sed_flag s,:$var:?,:,g)
+            trimmed=$(echo $trimmed | sed $sed_flag s,^$var:,:,)
+            echo "$trimmed"
+        fi
+    done
+}
+
+sbin="/usr/local/sbin"
+gnubin="/usr/local/opt/coreutils/libexec/gnubin"
+
+prependPath $sbin $gnubin
+
+## Section for bash prompt details
+
 if [ "$(whoami)" = "root" ]; then
 	a="\[$bldred\]\u@\h\[\e[m\]:\[$bldblu\]\w\[\e[m\]"
 	b=" - \A \[$bldred\]#\[\e[m\] "
@@ -47,6 +91,9 @@ else
 	b=" - \A \[$txtylw\]$\[\e[m\] "
     export PS1=$a$b
 fi
+
+## Section for helping with terminal navigation
+
 export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 
 alias ls="ls -Gal"
