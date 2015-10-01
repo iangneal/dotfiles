@@ -43,7 +43,6 @@ prependPath(){
     do
         if [[ "$PATH" != *"$var"* ]]
         then
-            echo $var
             export PATH="$var:$PATH"
         else
             # remove all instances of this variable from the path
@@ -70,7 +69,6 @@ removePath(){
             fi
             trimmed=$(echo $PATH | sed $sed_flag s,:$var:?,:,g)
             trimmed=$(echo $trimmed | sed $sed_flag s,^$var:,:,)
-            echo "$trimmed"
         fi
     done
 }
