@@ -75,8 +75,8 @@ removePath(){
 
 sbin="/usr/local/sbin"
 gnubin="/usr/local/opt/coreutils/libexec/gnubin"
-
-prependPath $sbin $gnubin
+depottools="/Users/Ian/workspace/depot_tools"
+prependPath $sbin $gnubin $depottools
 
 ## Section for bash prompt details
 
@@ -95,6 +95,8 @@ fi
 export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 
 alias ls="ls -Gal"
+
+eval "$(thefuck --alias)"
 
 ## Section for git related commands
 

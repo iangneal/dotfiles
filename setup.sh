@@ -3,11 +3,12 @@
 #   Automatically replaces all dotfiles in the user's home directory with the ones in
 #   this repo for easy setup
 ###
-for dotfile in .*; do
-    if [ -f "$dotfile" -a "$dotfile" != ".gitignore" ]
+for dotfile in dot/*; do
+    if [ -f "$dotfile" ]
     then
-        rm -f ~/$dotfile
-        ln -s $(pwd)/$dotfile ~/$dotfile
+	newname=${dotfile:4}
+        rm -f ~/.$newname
+        ln -s $(pwd)/$dotfile ~/.$newname
     fi
 done
 echo "Done. Please restart your shell for bash configurations to appear"
