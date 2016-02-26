@@ -94,9 +94,25 @@ fi
 
 export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 
-alias ls="ls -Gal"
+alias ls="ls -Gal --color=auto"
 
-eval "$(thefuck --alias)"
+if [[ `thefuck --version 2>&1 /dev/null; echo $?` == '0' ]]; then
+    eval "$(thefuck --alias)"
+fi
+
+## Section for running processes
+
+notify(){
+    $@
+    echo ""
+    echo "Sending sms..."
+    message=$@
+    curl -X POST http://textbelt.com/text \
+         -d number=5126359155 \
+         -d "from=$(whoami)@$(hostname)" \
+         -d "message=Process '$message' completed: exit code $?"
+    echo ""
+}
 
 ## Section for git related commands
 
@@ -188,7 +204,6 @@ alias -- git-switch-https="gitSwitchProtocol https"
 
 alias sl="sl -e"
 alias cd..="cd .."
-
 
 alias clr="clear"
 
