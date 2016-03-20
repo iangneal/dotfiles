@@ -1,0 +1,5 @@
+Host *
+    HashKnownHosts no
+    ServerAliveInterval 120
+    TCPKeepAlive no
+    ForwardX11Trusted yes
