@@ -6,7 +6,7 @@
 for dotfile in dot/*; do
     if [ -f "$dotfile" ]
     then
-	newname=${dotfile:4}
+	    newname=${dotfile:4}
         rm -f ~/.$newname
         ln -s $(pwd)/$dotfile ~/.$newname
     fi

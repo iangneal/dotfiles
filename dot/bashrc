@@ -46,7 +46,7 @@ prependPath(){
             export PATH="$var:$PATH"
         else
             # remove all instances of this variable from the path
-            # and then prepend - gets rid of the issue of having 
+            # and then prepend - gets rid of the issue of having
             # the same thing on the path multiple times.
             sed_flag="-r"
             if [ "$(uname)" == "Darwin" ]; then
@@ -136,7 +136,7 @@ gitAllFunction(){
 
 alias gcamp=gitAllFunction
 
-### This is for changing a git repo's protocol 
+### This is for changing a git repo's protocol
 
 gitSwitchProtocol(){
     if [ "$1" != "https" ]
@@ -160,7 +160,7 @@ gitSwitchProtocol(){
             return -1
         fi
         NEW_URL="git@github.com:$USER/$REPO.git"
-    
+
     else
         REMOTE=${1-origin}
 
@@ -183,7 +183,7 @@ gitSwitchProtocol(){
             return -1
         fi
     fi
-    
+
     echo "Changing repo url from "
     echo "  '$REPO_URL'"
     echo "      to "
@@ -192,13 +192,21 @@ gitSwitchProtocol(){
 
     CHANGE_CMD="git remote set-url origin $NEW_URL"
     `$CHANGE_CMD`
-    
+
     echo "Success"
     return 0
 }
 
 alias -- git-switch-ssh="gitSwitchProtocol"
 alias -- git-switch-https="gitSwitchProtocol https"
+
+## Section for autocomplete
+
+# add to ~/.bash_profile, and close/reopen a shell.  Will autocomplete any
+# hosts found in known_hosts.
+
+complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | \
+    sed -e s/,.*//g | uniq | grep -v "\["`;)" ssh
 
 ## Section for mistakenly typed commands
 
