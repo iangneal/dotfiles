@@ -94,12 +94,6 @@ fi
 
 export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 
-alias ls="ls -Gal --color=auto"
-
-if [[ `thefuck --version 2>&1 /dev/null; echo $?` == '0' ]]; then
-    eval "$(thefuck --alias)"
-fi
-
 ## Section for running processes
 
 notify(){
@@ -114,27 +108,6 @@ notify(){
     echo ""
 }
 
-## Section for git related commands
-
-alias gau="git add -u"
-alias gaa="git add -A"
-alias gcm="git commit -m"
-alias gcam="git commit -a -m"
-
-alias gs="git status"
-alias gl="git log"
-
-alias gps="git push"
-alias gpl="git pull"
-alias gch="git checkout"
-alias gbr="git checkout -b"
-
-gitAllFunction(){
-    git commit -a -m "$1"
-    git push
-}
-
-alias gcamp=gitAllFunction
 
 ### This is for changing a git repo's protocol
 
@@ -210,20 +183,19 @@ complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | \
 complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | \
     sed -e s/,.*//g | uniq | grep -v "\["`;)" scp
 
-## Section for mistakenly typed commands
-
-alias sl="sl -e"
-alias cd..="cd .."
-
-alias clr="clear"
-
-alias refresh="source ~/.bashrc"
 
 # allows ** to be recursive
 shopt -s globstar
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 
 # enable programmable completion features
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
+fi
+# bash aliases
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
 fi
 
