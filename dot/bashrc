@@ -1,3 +1,26 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+
+## Some general setup
+
+# https://sanctum.geek.nz/arabesque/better-bash-history/
+shopt -s histappend
+HISTFILESIZE="10000000"
+HISTSIZE="99999"
+HISTCONTROL="ignoreboth"
+HISTIGNORE="ls:bg:fg"
+HISTTIMEFORMAT="%F %T"
+shopt -s cmdhist
+PROMPT_COMMAND="history -a"
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 ###
 #   Bash prompt definitions
 ###
@@ -183,7 +206,8 @@ complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | \
     sed -e s/,.*//g | uniq | grep -v "\["`;)" scp
 
 
-# allows ** to be recursive
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
 shopt -s globstar
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
