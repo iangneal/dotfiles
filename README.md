@@ -10,9 +10,7 @@ Make sure you have bash >= 4.0 installed
 For OSX:
 
     brew install bash
-    sudo -s
-    brew ls bash | grep '/bin/bash$' >> /etc/shells
-    exit
+    sudo brew ls bash | grep '/bin/bash$' >> /etc/shells
     chsh -s $(brew ls bash | grep '/bin/bash$') $(whoami)
 
 Run `./setup.sh` to install. Then restart your shell, and all the changes
