@@ -5,6 +5,8 @@ irritating to set up over and over again.
 
 ## Installation
 
+### Bash
+
 Make sure you have bash >= 4.0 installed
 
 For OSX:
@@ -13,13 +15,21 @@ For OSX:
     sudo brew ls bash | grep '/bin/bash$' >> /etc/shells
     chsh -s $(brew ls bash | grep '/bin/bash$') $(whoami)
 
-Run `./setup.sh` to install. Then restart your shell, and all the changes
-should take place (for non-bash configurations, the changes should take place
+### Dot file installation
+
+    bash setup.sh
+    # Now restart your shell
+
+For non-bash configuration files (like `.vimrc`, the changes should take place
 the next time you launch the application).
 
-Note: For further changes to bash after running `./setup.sh` at least once on
-your machine, running the `$ refresh` command will re-source the dot files
-and the changes will take place immediately and not require a shell restart.
+_Note_: If you modify the `.bashrc` after doing the initial setup, just run the
+following:
+
+    $ refresh
+
+And this will re-source the `.bashrc` and the changes will take place
+immediately and not require a shell restart.
 
 ### For those of us new to bash
 
