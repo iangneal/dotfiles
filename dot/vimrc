@@ -1,4 +1,14 @@
-" http://dougblack.io/words/a-good-vimrc.html
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Author:
+"     Ian Glen Neal
+"     ian.gl.neal@gmail.com
+"     github.com/Dahca
+"
+" Sources:
+"     http://dougblack.io/words/a-good-vimrc.html
+"     https://amix.dk/vim/vimrc.html
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Leader is , (not default \)
 let mapleader=","
@@ -11,6 +21,8 @@ set showcmd
 set cursorline
 " Visual autocomplete for command menu
 set wildmenu
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
 " Redraw only when vim needs to.
 set lazyredraw
 " Highlight matching [{()}]
@@ -21,6 +33,11 @@ set incsearch
 set hlsearch
 " Turn off search highlight [ ,<space> ]
 nnoremap <leader><space> :nohlsearch<CR>
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" Always show current position
 set ruler
 colorscheme elflord
 syntax enable
@@ -59,7 +76,6 @@ else
 endif
 
 " Trim trailing whitespace on save
-
 fun! <SID>StripTrailingWhitespaces()
   let l = line(".")
   let c = col(".")
@@ -69,5 +85,8 @@ endfun
 
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-" For the secret stuff or whatnot
-source ~/.private/vimrc
+" For any secret configurations (anything that might contain an internal url or
+" IP, for example)
+if filereadable("~/.private/vimrc")
+  source ~/.private/vimrc
+endif

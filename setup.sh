@@ -1,7 +1,7 @@
 #! /bin/bash
 ###
-#   Automatically replaces all dotfiles in the user's home directory with the ones in
-#   this repo for easy setup
+#   Automatically replaces all dotfiles in the user's home directory with the
+#   ones in this repo for easy setup.
 ###
 for dotfile in dot/*; do
     if [ -f "$dotfile" ]
@@ -12,7 +12,7 @@ for dotfile in dot/*; do
     fi
 done
 ###
-#   Routes program specific configurations to their correct locations
+#   Routes program specific configurations to their correct locations.
 ###
 for config in config/*; do
     if [ -f "$config" ]
@@ -22,4 +22,4 @@ for config in config/*; do
         ln -s $(pwd)/$config ~/.$dirname/config
     fi
 done
-echo "Done. Please restart your shell for bash configurations to appear"
+echo "Done. Please restart your shell for bash configurations to appear."
