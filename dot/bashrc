@@ -120,6 +120,8 @@ export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 
 notify(){
     $@
+    cd ~/.textbelt_server
+
     echo ""
     echo "Sending sms..."
     message=$@
@@ -223,7 +225,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # Sourcing files that may have secrets in them or are company-specific
-# and I don't want to commit to my public repo. Assumed to be in 
+# and I don't want to commit to my public repo. Assumed to be in
 # ~/.bash_private/..
 for file in ~/.private/bash*; do
     if [ -f "$file" ]
