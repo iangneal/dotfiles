@@ -1,5 +1,11 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
+# If not running interactively, don't do anything.
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 ## Some general setup
 
 # https://sanctum.geek.nz/arabesque/better-bash-history/
@@ -14,12 +20,6 @@ PROMPT_COMMAND="history -a"
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
 
 ###
 #   Bash prompt definitions
