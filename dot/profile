@@ -1,0 +1,3 @@
+# This is executed by sh or whatever non-bash shell on login. A workaround
+# for chsh not working.
+exec /bin/bash --login
