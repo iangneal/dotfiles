@@ -1,0 +1,10 @@
+#! /bin/zsh
+###
+#   Login script for zsh.
+###
+
+echo -e "\nWelcome $(whoami)!\n"
+
+if [[ -f ~/.zshrc ]]; then
+  source ~/.zshrc
+fi
