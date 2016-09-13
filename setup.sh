@@ -1,21 +1,26 @@
 #! /bin/bash
-###
-#   Installs some nice things before we start.
-###
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  # Linux
-  sudo apt install git wget curl
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-  # Mac OSX
-  brew install git curl wget
+
+# Setup submodules.
+git submodule init
+git submodule update
+
+# Installs some nice things before we start.
+if sudo -v >> /dev/null 2>&1 ; then
+  if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    # Linux
+    sudo apt install git wget curl
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
+    # Mac OSX
+    brew install git curl wget
+  else
+    echo "Unknown OSTYPE."
+  fi
 else
-  echo "Unknown OSTYPE."
+  echo "You do not have sudo privileges on this machine. Skipping package install..."
 fi
 
-###
-#   Automatically replaces all dotfiles in the user's home directory with the
-#   ones in this repo for easy setup.
-###
+# Automatically replaces all dotfiles in the user's home directory with the
+# ones in this repo for easy setup.
 for dotfile in dot/*; do
   if [ "$dotfile" != "dot\/\."* ]; then
     echo "symlinking $dotfile..."
@@ -25,9 +30,7 @@ for dotfile in dot/*; do
   fi
 done
 
-###
-#   Routes program specific configurations to their correct locations.
-###
+# Routes program specific configurations to their correct locations.
 for config in config/*; do
   if [ -f "$config" ]; then
     dirname=${config:7}
