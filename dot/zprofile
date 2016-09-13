@@ -3,7 +3,14 @@
 #   Login script for zsh.
 ###
 
+function fortune_b {
+  fortune -a | while read line; do
+    echo -e "\t"$line
+  done
+}
+
 echo -e "\nWelcome $(whoami)!\n"
+[[ -f /usr/games/fortune ]] || [[ -f /usr/local/bin/fortune ]] && fortune_b && echo
 
 if [[ -f ~/.zshrc ]]; then
   source ~/.zshrc

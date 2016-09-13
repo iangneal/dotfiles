@@ -4,6 +4,10 @@
 git submodule init
 git submodule update
 
+# Setup some of the other, random resources I like.
+# - Fonts
+bash res/fonts/install.sh
+
 # Installs some nice things before we start.
 if sudo -v >> /dev/null 2>&1 ; then
   if [[ "$OSTYPE" == "linux-gnu" ]]; then
