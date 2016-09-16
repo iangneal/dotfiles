@@ -85,3 +85,6 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.bash_aliases
+
+# Change zcompdump location to prevent tons of files coming up.
+compinit -d ~/.zcompdump
