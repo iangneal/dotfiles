@@ -87,4 +87,5 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 source ~/.bash_aliases
 
 # Change zcompdump location to prevent tons of files coming up.
-compinit -d ~/.zcompdump
+compinit -u -d ~/.zcompdump_${ZSH_VERSION}_$USER
+
