@@ -16,6 +16,7 @@ let mapleader=","
 " Make shift-tab into inverse tab for insert mode
 inoremap <S-Tab> <C-d>
 
+set backspace=indent,eol,start
 " Show line numbers
 set number
 " Show command in bottom bar

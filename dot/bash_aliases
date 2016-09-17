@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alias ls="ls -Gal --color=auto"
+alias ls="ls -Gal"
 
 if [[ `thefuck --version 2>&1 /dev/null; echo $?` == '0' ]]; then
     eval "$(thefuck --alias)"
