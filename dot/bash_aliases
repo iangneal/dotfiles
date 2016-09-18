@@ -1,6 +1,14 @@
 #!/bin/bash
 
-alias ls="ls -Gal"
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  # Linux
+  alias ls="ls -alp --color=auto"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  # Mac OSX
+  alias ls="ls -Galp"
+else
+  echo "Unknown OSTYPE."
+fi
 
 if [[ `thefuck --version 2>&1 /dev/null; echo $?` == '0' ]]; then
     eval "$(thefuck --alias)"
