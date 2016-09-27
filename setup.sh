@@ -23,6 +23,9 @@ else
   echo "You do not have sudo privileges on this machine. Skipping package install..."
 fi
 
+# Do some git configurations
+git config --global core.editor "vim"
+
 # Automatically replaces all dotfiles in the user's home directory with the
 # ones in this repo for easy setup.
 for dotfile in dot/*; do

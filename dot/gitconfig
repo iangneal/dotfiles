@@ -3,3 +3,5 @@
 	email = ian.gl.neal@gmail.com
 [push]
 	default = simple
+[core]
+	editor = vim
