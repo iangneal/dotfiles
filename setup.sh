@@ -10,17 +10,18 @@ bash res/fonts/install.sh
 
 # Installs some nice things before we start.
 if sudo -v >> /dev/null 2>&1 ; then
-  if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # Linux
-    sudo apt install git wget curl
+    sudo apt install git wget curl zsh
   elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Mac OSX
-    brew install git curl wget
+    brew install git curl wget zsh
   else
     echo "Unknown OSTYPE."
   fi
 else
-  echo "You do not have sudo privileges on this machine. Skipping package install..."
+  echo "You do not have sudo privileges on this machine. Skipping package "
+      "install..."
 fi
 
 # Do some git configurations

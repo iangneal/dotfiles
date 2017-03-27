@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux
   alias ls="ls -alp --color=auto"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
