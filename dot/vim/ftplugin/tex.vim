@@ -109,9 +109,6 @@ endif " exists("loaded_matchit")
 
 let &cpo = s:save_cpo
 
-vim:sts=2:sw=2:
-
-
 " (iangneal): My modifications.
 " Set linewrapping to match 80 characters.
 setlocal textwidth=80
