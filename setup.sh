@@ -33,7 +33,7 @@ for dotfile in dot/*; do
   if [ "$dotfile" != "dot\/\."* ]; then
     echo "symlinking $dotfile..."
     newname=${dotfile:4}
-    rm -f ~/.$newname
+    rm -rf ~/.$newname
     ln -s $(pwd)/$dotfile ~/.$newname
   fi
 done
@@ -47,3 +47,4 @@ for config in config/*; do
   fi
 done
 echo "Done. Please restart your shell for bash configurations to appear."
+
