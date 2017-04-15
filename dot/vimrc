@@ -41,6 +41,9 @@ nnoremap <leader><space> :nohlsearch<CR>
 " Set to auto read when a file is changed from the outside
 set autoread
 
+" Folding!
+set foldmethod=syntax
+
 " Always show current position
 set ruler
 colorscheme elflord
