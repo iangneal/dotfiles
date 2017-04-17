@@ -35,6 +35,8 @@ set showmatch
 set incsearch
 " Highlight matches.
 set hlsearch
+" Disable autoformatting of sentences to have two spaces at the beginning.
+set nojoinspaces
 " Turn off search highlight [ ,<space> ]
 nnoremap <leader><space> :nohlsearch<CR>
 
