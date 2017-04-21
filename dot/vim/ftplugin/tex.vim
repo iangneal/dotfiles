@@ -12,7 +12,6 @@ endif
 
 " Don't load another plugin for this buffer
 let b:did_ftplugin = 1
-
 let s:save_cpo = &cpo
 set cpo&vim
 
@@ -112,4 +111,4 @@ let &cpo = s:save_cpo
 " (iangneal): My modifications.
 " Set linewrapping to match 80 characters.
 setlocal textwidth=80
-
+setlocal nocindent
