@@ -15,6 +15,8 @@ let b:did_ftplugin = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
+setlocal nocindent
+
 " This may be used to set b:tex_flavor.  A more complete version can be found
 " in foo.vim (see http://www.vim.org/script.php?script_id=72).
 if !exists("*s:GetModelines")
