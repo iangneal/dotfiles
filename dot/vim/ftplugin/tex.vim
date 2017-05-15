@@ -112,4 +112,5 @@ let &cpo = s:save_cpo
 " Set linewrapping to match 80 characters.
 setlocal textwidth=80
 setlocal nocindent
+set spell spelllang=en_us
 
