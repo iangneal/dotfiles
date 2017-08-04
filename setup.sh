@@ -1,5 +1,29 @@
 #! /bin/bash
 
+# Installs some nice things before we start.
+if sudo -v >> /dev/null 2>&1 ; then
+  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    # Linux
+    sudo apt install git wget curl zsh subversion
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
+    # Mac OSX
+    brew install git curl wget zsh subversion
+  else
+    echo "Unknown OSTYPE of $OSTYPE"
+  fi
+else
+  echo "You do not have sudo privileges on this machine. Skipping package "
+       "install..."
+fi
+
+# Switch shell if possible
+if ! type "zsh" > /dev/null; then
+  chsh -s $(which zsh)
+fi
+
+# Do some git configurations
+git config --global core.editor "vim"
+
 # Setup submodules.
 git submodule init
 git submodule update
@@ -7,25 +31,6 @@ git submodule update
 # Setup some of the other, random resources I like.
 # - Fonts
 bash res/fonts/install.sh
-
-# Installs some nice things before we start.
-if sudo -v >> /dev/null 2>&1 ; then
-  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    # Linux
-    sudo apt install git wget curl zsh
-  elif [[ "$OSTYPE" == "darwin"* ]]; then
-    # Mac OSX
-    brew install git curl wget zsh
-  else
-    echo "Unknown OSTYPE."
-  fi
-else
-  echo "You do not have sudo privileges on this machine. Skipping package "
-      "install..."
-fi
-
-# Do some git configurations
-git config --global core.editor "vim"
 
 # Automatically replaces all dotfiles in the user's home directory with the
 # ones in this repo for easy setup.
