@@ -17,7 +17,7 @@ else
 fi
 
 # Switch shell if possible
-if ! type "zsh" > /dev/null; then
+if type "zsh" > /dev/null; then
   chsh -s $(which zsh)
 fi
 
