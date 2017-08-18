@@ -109,8 +109,8 @@ endif " exists("loaded_matchit")
 let &cpo = s:save_cpo
 
 " (iangneal): My modifications.
-" Set linewrapping to match 80 characters.
-setlocal textwidth=80
+" Remove the colored column.
+set colorcolumn=
 setlocal nocindent
 set spell spelllang=en_us
 

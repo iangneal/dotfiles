@@ -78,13 +78,17 @@ setlocal cindent
 autocmd FileType markdown setl sw=4 sts=4 et
 autocmd FileType make set noexpandtab
 
-" Highlights the 80th column
+" Highlights the 81th column -- no text should be in the 81th column.
 if exists('+colorcolumn')
-  set colorcolumn=80
-  highlight ColorColumn ctermbg=7
+  set colorcolumn=81
+  highlight ColorColumn ctermbg=LightRed
 else
-  autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+  autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
 endif
+
+" Change spelling highlights
+highlight clear SpellBad
+highlight SpellBad cterm=bold ctermbg=Yellow
 
 " Trim trailing whitespace on save
 fun! <SID>StripTrailingWhitespaces()
