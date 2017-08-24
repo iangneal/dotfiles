@@ -7,10 +7,12 @@ if sudo -v >> /dev/null 2>&1 ; then
     sudo apt install git wget curl zsh subversion
   elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Mac OSX
-    brew install git curl wget zsh subversion
+    brew install git curl wget zsh subversion bash
   else
     echo "Unknown OSTYPE of $OSTYPE"
   fi
+  # Make zsh a "standard" shell.
+  sudo echo "$(which zsh)" >> /etc/shells
 else
   echo "You do not have sudo privileges on this machine. Skipping package "
        "install..."
