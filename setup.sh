@@ -12,7 +12,7 @@ if sudo -v >> /dev/null 2>&1 ; then
     echo "Unknown OSTYPE of $OSTYPE"
   fi
   # Make zsh a "standard" shell.
-  sudo echo "$(which zsh)" >> /etc/shells
+  sudo bash -c "echo $(which zsh) >> /etc/shells"
 else
   echo "You do not have sudo privileges on this machine. Skipping package "
        "install..."
