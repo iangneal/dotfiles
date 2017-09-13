@@ -67,12 +67,12 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 
 " Load filetype-specific indent files
-filetype plugin indent on
 setlocal tabstop=2
 setlocal softtabstop=2
 setlocal shiftwidth=2
 setlocal expandtab
 setlocal cindent
+filetype plugin indent on
 
 " Set tabs differently depending on filetype
 autocmd FileType markdown setl sw=4 sts=4 et
