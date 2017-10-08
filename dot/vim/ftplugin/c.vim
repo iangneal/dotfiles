@@ -3,6 +3,13 @@
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
 " Last Change:	2016 Jun 12
 
+" Hmm.
+setlocal tabstop=2
+setlocal expandtab
+setlocal shiftwidth=2
+setlocal softtabstop=2
+setlocal cindent
+
 " Only do this when not done yet for this buffer
 if exists("b:did_ftplugin")
   finish

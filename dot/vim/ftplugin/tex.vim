@@ -110,7 +110,11 @@ let &cpo = s:save_cpo
 
 " (iangneal): My modifications.
 " Remove the colored column.
-set colorcolumn=
+setlocal colorcolumn=
+setlocal tabstop=2
+setlocal expandtab
+setlocal shiftwidth=2
+setlocal softtabstop=2
 setlocal nocindent
-set spell spelllang=en_us
+setlocal spell spelllang=en_us
 
