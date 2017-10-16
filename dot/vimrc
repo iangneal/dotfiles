@@ -88,7 +88,7 @@ endif
 
 " Change spelling highlights
 highlight clear SpellBad
-highlight SpellBad cterm=bold ctermbg=Yellow
+highlight SpellBad cterm=bold ctermbg=DarkGray
 
 " Trim trailing whitespace on save
 fun! <SID>StripTrailingWhitespaces()
