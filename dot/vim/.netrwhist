@@ -1,4 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =3
 let g:netrw_dirhist_1='/private/var/log/apache2'
 let g:netrw_dirhist_2='/Users/iangneal/workspace/dotfiles/dot/vim/ftdetect'
+let g:netrw_dirhist_3='/Users/iangneal/workspace/undergrad-honors-thesis/tex'
