@@ -4,10 +4,10 @@
 if sudo -v >> /dev/null 2>&1 ; then
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # Linux
-    sudo apt install git wget curl zsh subversion
+    sudo apt install -y git wget curl zsh subversion tmux
   elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Mac OSX
-    brew install git curl wget zsh subversion bash
+    brew install git curl wget zsh subversion bash tmux
   else
     echo "Unknown OSTYPE of $OSTYPE"
   fi
@@ -20,7 +20,7 @@ fi
 
 # Switch shell if possible
 if type "zsh" > /dev/null; then
-  chsh -s $(which zsh)
+  chsh -s $(which zsh) || sudo chsh -s $(which zsh) || echo "Could not chsh"
 fi
 
 # Do some git configurations
@@ -33,6 +33,8 @@ git submodule update
 # Setup some of the other, random resources I like.
 # - Fonts
 bash res/fonts/install.sh
+# - tmux package manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Automatically replaces all dotfiles in the user's home directory with the
 # ones in this repo for easy setup.
