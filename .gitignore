@@ -1,4 +1,4 @@
 *.tmp
 *.swp
 
-dpt/vim/.netrwhist
+dot/vim/.netrwhist
