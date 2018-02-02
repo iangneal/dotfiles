@@ -115,3 +115,4 @@ if [[ $#h -gt 0 ]]; then
   zstyle ':completion:*:slogin:*' hosts $h
 fi
 
+export PATH="/usr/local/sbin:$PATH"
