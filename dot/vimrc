@@ -43,6 +43,10 @@ nnoremap <leader><space> :nohlsearch<CR>
 " Set to auto read when a file is changed from the outside
 set autoread
 
+" Modeline -- file-specific vim settings.
+set modeline
+set modelines=5
+
 " Folding!
 set foldmethod=syntax
 
