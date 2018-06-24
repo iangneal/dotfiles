@@ -1,4 +1,5 @@
 #! /bin/zsh
+# vim: set filetype=sh:
 ###
 #   Login script for zsh.
 ###
