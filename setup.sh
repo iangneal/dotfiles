@@ -4,7 +4,11 @@
 if sudo -v >> /dev/null 2>&1 ; then
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # Linux
-    sudo apt install -y git wget curl zsh subversion tmux
+    if [[ $(which apt) ]]; then
+      sudo apt install -y git wget curl zsh subversion tmux vim
+    else
+      sudo yum install -y git wget curl zsh subversion tmux vim
+    fi
   elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Mac OSX
     brew install git curl wget zsh subversion bash tmux
