@@ -51,6 +51,7 @@ for dotfile in dot/*; do
   fi
 done
 
+
 # Routes program specific configurations to their correct locations.
 for config in config/*; do
   if [ -f "$config" ]; then
@@ -59,5 +60,9 @@ for config in config/*; do
     ln -s $(pwd)/$config ~/.$dirname/config
   fi
 done
+
+# Because ssh is picky...
+chmod 0755 ~/.ssh/config
+
 echo "Done. Please restart your shell for bash configurations to appear."
 
