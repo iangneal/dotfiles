@@ -3,10 +3,10 @@
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux
-  alias ls="ls -alp --color=auto"
+  alias ls="ls -alph --color=auto"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Mac OSX
-  alias ls="ls -Galp"
+  alias ls="ls -Galph"
 else
   echo "Unknown OSTYPE."
 fi
