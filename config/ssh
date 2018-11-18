@@ -3,6 +3,4 @@ Host *
     ServerAliveInterval 120
     TCPKeepAlive no
     ForwardX11Trusted yes
-    Ciphers +3des-cbc
-    KexAlgorithms +diffie-hellman-group1-sha1
 
