@@ -1,11 +1,12 @@
-#!/bin/bash
+#! /bin/bash
+# vim: set filetype=sh:
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux
-  alias ls="ls -alp --color=auto"
+  alias ls="ls -alph --color=auto"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Mac OSX
-  alias ls="ls -Galp"
+  alias ls="ls -Galph"
 else
   echo "Unknown OSTYPE."
 fi
@@ -45,3 +46,12 @@ alias clr="clear"
 
 alias refresh="source ~/.bashrc"
 
+## Section for fun functions.
+
+swapFiles() {
+  mv $1 $1.tmp
+  mv $2 $1
+  mv $1.tmp $2
+}
+
+alias swp=swapFiles

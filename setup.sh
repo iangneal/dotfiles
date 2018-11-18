@@ -4,7 +4,11 @@
 if sudo -v >> /dev/null 2>&1 ; then
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # Linux
-    sudo apt install -y git wget curl zsh subversion tmux
+    if [[ $(which apt) ]]; then
+      sudo apt install -y git wget curl zsh subversion tmux vim
+    else
+      sudo yum install -y git wget curl zsh subversion tmux vim
+    fi
   elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Mac OSX
     brew install git curl wget zsh subversion bash tmux
@@ -47,6 +51,7 @@ for dotfile in dot/*; do
   fi
 done
 
+
 # Routes program specific configurations to their correct locations.
 for config in config/*; do
   if [ -f "$config" ]; then
@@ -55,5 +60,9 @@ for config in config/*; do
     ln -s $(pwd)/$config ~/.$dirname/config
   fi
 done
+
+# Because ssh is picky...
+chmod 0755 ~/.ssh/config
+
 echo "Done. Please restart your shell for bash configurations to appear."
 

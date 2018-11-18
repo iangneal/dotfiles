@@ -85,10 +85,10 @@
 "    python_slow_sync                       Can be set to 0 for slow machines
 "
 
-setlocal tabstop=2
+setlocal tabstop=4
 setlocal expandtab
-setlocal shiftwidth=2
-setlocal softtabstop=2
+setlocal shiftwidth=4
+setlocal softtabstop=4
 setlocal cindent
 
 
