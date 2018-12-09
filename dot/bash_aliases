@@ -4,6 +4,7 @@
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux
   alias ls="ls -alph --color=auto"
+  alias open="xdg-open"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Mac OSX
   alias ls="ls -Galph"
