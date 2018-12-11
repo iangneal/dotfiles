@@ -40,6 +40,8 @@ Plug 'w0rp/ale'
 Plug 'zchee/deoplete-clang'
 Plug 'zchee/deoplete-jedi'
 Plug 'tpope/vim-commentary'
+Plug 'majutsushi/tagbar'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 set number          " show line numbers
@@ -94,6 +96,8 @@ let g:airline_section_y = ""        " hide file encoding
 
 :map <F2> :noh<CR>
 
+" Leader is , (not default \)
+let mapleader=","
 
 " cscope
 if has("cscope")
@@ -105,7 +109,6 @@ if has("cscope")
         cs add $CSCOPE_DB
     endif
 endif
-
 
 nmap <unique> <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <unique> <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
@@ -132,8 +135,9 @@ nmap <unique> <C-Space><C-Space>f :vert scs find f <C-R>=expand("<cfile>")<CR><C
 nmap <unique> <C-Space><C-Space>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <unique> <C-Space><C-Space>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 
-" Leader is , (not default \)
-let mapleader=","
+" ctags
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
+nnoremap <leader>. :CtrlPTag<cr>
 
 " Make shift-tab into inverse tab for insert mode
 inoremap <S-Tab> <C-d>

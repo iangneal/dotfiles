@@ -56,3 +56,7 @@ swapFiles() {
 }
 
 alias swp=swapFiles
+
+## tmux
+alias tmux="tmux -2"
+alias a="tmux attach"
