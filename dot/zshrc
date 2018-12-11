@@ -115,3 +115,5 @@ if [[ $#h -gt 0 ]]; then
   zstyle ':completion:*:slogin:*' hosts $h
 fi
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
