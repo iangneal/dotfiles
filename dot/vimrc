@@ -274,7 +274,7 @@ if exists("+showtabline")
     set stal=2
     set tabline=%!MyTabLine()
     set showtabline=1
-    highlight link TabNum Special
+    highlight link TabNum SpecialKey
 endif
 
 " For any secret configurations (anything that might contain an internal url or
