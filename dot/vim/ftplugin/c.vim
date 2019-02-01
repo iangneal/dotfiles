@@ -69,3 +69,5 @@ endif
 
 let &cpo = s:cpo_save
 unlet s:cpo_save
+
+syn match cType /\h\w\{-}_t\W/he=e-1
