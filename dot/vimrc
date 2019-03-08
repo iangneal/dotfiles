@@ -100,6 +100,7 @@ let g:airline_section_y = ""        " hide file encoding
 let mapleader=","
 
 " cscope
+set nocscopeverbose
 if has("cscope")
     " add any database in current directory
     if filereadable("cscope.out")
@@ -109,6 +110,7 @@ if has("cscope")
         cs add $CSCOPE_DB
     endif
 endif
+set cscopeverbose
 
 nmap <unique> <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <unique> <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
@@ -223,7 +225,7 @@ fun! <SID>StripTrailingWhitespaces()
   call cursor(l, c)
 endfun
 
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+"autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 set shellslash
 " Rename tabs to show tab number.
 " (Based on http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)
