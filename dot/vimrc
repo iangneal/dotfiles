@@ -10,8 +10,136 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Thanks to Ofir for this
+
+" define plugins
+call plug#begin('~/.vim/plugged')
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'fatih/vim-go'
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug 'junegunn/fzf.vim'
+Plug 'majutsushi/tagbar'
+Plug 'morhetz/gruvbox'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'w0rp/ale'
+Plug 'zchee/deoplete-clang'
+Plug 'zchee/deoplete-jedi'
+Plug 'tpope/vim-commentary'
+Plug 'majutsushi/tagbar'
+Plug 'ctrlpvim/ctrlp.vim'
+call plug#end()
+
+set number          " show line numbers
+set laststatus=2    " always show status line
+set background=dark
+colorscheme elflord
+set cursorline
+
+" navigation
+" treat long lines as break lines
+map j gj
+map k gk
+
+" indentation
+set expandtab       " replace tab with spaces
+set tabstop=4       " number of spaces for tab
+set autoindent      " copy indent from current line
+set shiftwidth=4    " number of spaces for autoindent step
+
+" search
+set hlsearch    " highlight search results
+set incsearch   " incremental search
+set ignorecase  " ignore case
+set smartcase   " don't ignore case when pattern contains uppercase letters
+
+" disable backup
+set nobackup
+set nowritebackup
+set noswapfile
+
+" misc
+set wildmenu                    " enhanced command-line completion
+set wildignore=*.o,*~,*.pyc     " ignore compiled files
+
+" fzf
+nmap <c-p> :Files<cr>
+nmap <c-n> :Buffers<cr>
+
+" ack
+let g:ackprg = "ag --vimgrep"
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
+let g:deoplete#sources#clang#clang_header = '/usr/include/clang/6.0/include/'
+let g:deoplete#sources#clang#clang_complete_database = '.'
+
+" airline
+let g:airline_extensions = []       " disable all extensions
+let g:airline_section_x = ""        " hide file type
+let g:airline_section_y = ""        " hide file encoding
+
+:map <F2> :noh<CR>
+
 " Leader is , (not default \)
 let mapleader=","
+
+" cscope
+set nocscopeverbose
+if has("cscope")
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+endif
+set cscopeverbose
+
+nmap <unique> <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <unique> <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <unique> <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-Space>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-Space>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-Space>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-Space>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-Space>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-Space>f :scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <unique> <C-Space>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <unique> <C-Space>d :scs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-Space><C-Space>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-Space><C-Space>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-Space><C-Space>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-Space><C-Space>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-Space><C-Space>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <unique> <C-Space><C-Space>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <unique> <C-Space><C-Space>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <unique> <C-Space><C-Space>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+
+" ctags
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
+nnoremap <leader>. :CtrlPTag<cr>
 
 " Make shift-tab into inverse tab for insert mode
 inoremap <S-Tab> <C-d>
@@ -50,11 +178,6 @@ set modelines=5
 " Folding!
 set foldmethod=syntax
 
-" Always show current position
-set ruler
-colorscheme elflord
-syntax enable
-
 " Movement
 
 " Move vertically by visual line
@@ -63,19 +186,19 @@ nnoremap k gk
 " highlight last inserted text
 nnoremap gV `[v`]
 
-" Move annoying vim tmp files to a new backup location
-set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set backupskip=/tmp/*,/private/tmp/*
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set writebackup
+" " Move annoying vim tmp files to a new backup location
+" set backup
+" set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+" set backupskip=/tmp/*,/private/tmp/*
+" set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+" set writebackup
 
 " Load filetype-specific indent files
-setlocal tabstop=2
-setlocal softtabstop=2
-setlocal shiftwidth=2
-setlocal expandtab
-setlocal cindent
+"setlocal tabstop=2
+"setlocal softtabstop=2
+"setlocal shiftwidth=2
+"setlocal expandtab
+"setlocal cindent
 filetype plugin indent on
 
 " Set tabs differently depending on filetype
@@ -102,7 +225,59 @@ fun! <SID>StripTrailingWhitespaces()
   call cursor(l, c)
 endfun
 
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+"autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+set shellslash
+" Rename tabs to show tab number.
+" (Based on http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)
+if exists("+showtabline")
+    function! MyTabLine()
+        let s = ''
+        let wn = ''
+        let t = tabpagenr()
+        let i = 1
+        while i <= tabpagenr('$')
+            let buflist = tabpagebuflist(i)
+            let winnr = tabpagewinnr(i)
+            let s .= '%' . i . 'T'
+            let s .= (i == t ? '%1*' : '%2*')
+            let s .= ' '
+            let wn = tabpagewinnr(i,'$')
+
+            let s .= '%#TabNum#'
+            let s .= i
+            " let s .= '%*'
+            let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+            let bufnr = buflist[winnr - 1]
+            let file = bufname(bufnr)
+            let buftype = getbufvar(bufnr, 'buftype')
+            if buftype == 'nofile'
+                if file =~ '\/.'
+                    let file = substitute(file, '.*\/\ze.', '', '')
+                endif
+            else
+                let path_parts = split(fnamemodify(file, ':.:h'), '\/')
+                let short_path = ''
+                for part in path_parts
+                    let short_path .= part[0] . '/'
+                endfor
+
+                let file = short_path . fnamemodify(file, ':t')
+            endif
+            if file == ''
+                let file = '[No Name]'
+            endif
+            let s .= ' ' . file . ' '
+            let i = i + 1
+        endwhile
+        let s .= '%T%#TabLineFill#%='
+        let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+        return s
+    endfunction
+    set stal=2
+    set tabline=%!MyTabLine()
+    set showtabline=1
+    highlight link TabNum SpecialKey
+endif
 
 " For any secret configurations (anything that might contain an internal url or
 " IP, for example)

@@ -4,10 +4,10 @@
 " Last Change:	2016 Jun 12
 
 " Hmm.
-setlocal tabstop=2
+setlocal tabstop=4
 setlocal expandtab
-setlocal shiftwidth=2
-setlocal softtabstop=2
+setlocal shiftwidth=4
+setlocal softtabstop=4
 setlocal cindent
 
 " Only do this when not done yet for this buffer
@@ -69,3 +69,5 @@ endif
 
 let &cpo = s:cpo_save
 unlet s:cpo_save
+
+syn match cType /\h\w\{-}_t\W/he=e-1

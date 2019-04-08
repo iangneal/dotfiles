@@ -1,9 +1,9 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
 # Launch Zsh
-if [ -t 1 ]; then
-  exec zsh
-fi
+#if [ -t 1 ]; then
+#  exec zsh
+#fi
 
 # If not running interactively, don't do anything.
 case $- in
@@ -237,3 +237,5 @@ for file in ~/.private/bash*; do
     . "$file"
   fi
 done
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
