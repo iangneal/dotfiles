@@ -14,6 +14,7 @@ function fortune_b {
 }
 
 echo -e "\nWelcome $(whoami)!\n"
+echo -e "Logged in using $SHELL\n"
 [[ -f /usr/games/fortune ]] || [[ -f /usr/local/bin/fortune ]] && fortune_b && echo
 
 if [[ -f ~/.bashrc ]]; then

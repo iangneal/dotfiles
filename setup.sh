@@ -5,7 +5,7 @@ if sudo -v >> /dev/null 2>&1 ; then
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # Linux
     if [[ $(which apt) ]]; then
-      sudo apt install -y git wget curl zsh subversion tmux vim ctags cscope
+      sudo apt install -y git wget curl zsh subversion tmux vim ctags cscope python3-neovim
     else
       sudo yum install -y git wget curl zsh subversion tmux vim
     fi
